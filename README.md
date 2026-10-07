@@ -152,5 +152,16 @@ Onboarding a new member well is critical; properly set-up members are far more l
 Credit unions differentiate from banks on member wellbeing. Build a tool where a member (or a staff member on their behalf) can log a periodic financial check-in: income, rough monthly expenses by category (housing, food, transport, debt payments), and savings. The tool should surface something useful from that data, whatever makes sense to the candidate.
 
 
-## Notes
-- 
+### Interview Assessment Notes
+I added the Members model and modified the Task model. There is a many-to-many relationship between Members and Tasks, using a table called `assignments`. This table is in charge of tracking the status of each assignment.
+
+There is a simple search view where we can search for a member, and a Member View where we can check the member's assignments grouped by status.
+
+I chose the **New Member Journey Tracker** to reuse the status from the tasks, mainly because the requirement was focused on tracking. That is also why I did not add full CRUD functionality for Members and Tasks.
+
+Possible improvements would be to add create, update, and delete functionality, as well as the ability to assign tasks to members. Another possible improvement would be to add authentication to give bank staff access, together with permissions.
+
+Since the task was not asking for all these additional functions, I did not spend time implementing them.
+
+I also removed the task status because it makes more sense to reuse the same task for different members instead of creating a new task for each member. The status belongs to the assignment, not the task itself.
+
